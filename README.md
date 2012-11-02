@@ -8,5 +8,8 @@ Sometimes we end up having duplicate entries of the same key due to merge issues
 
 If you want to know the duplicate entries in the file open up the SublimeText2 console using ctrl+` to see the list of keys.
 
+Shortcut keys:
+* On windows & linux ctrl+shift+j, ctrl+shift+c
+* On mac cmd+j, cmd+c
 
 Definitely open to suggestions and ideas to improve this :)

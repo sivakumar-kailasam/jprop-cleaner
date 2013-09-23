@@ -18,6 +18,6 @@ Definitely open to suggestions and ideas to improve this :)
 
 Installation:
 -------------
-In case you haven't setup sublime package control before here's the official page - http://wbond.net/sublime_packages/package_control 
+In case you haven't setup sublime package control before here's the official page - https://sublime.wbond.net/installation
 
 This plugin is now available officially through the sublime package control. Search for 'Java property cleaner' and install it.

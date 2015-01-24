@@ -1,7 +1,7 @@
 jprop-cleaner
 =============
 
-A Sublime text 2 plugin to remove multiple occurrences of a key in java property files.
+A Sublime text plugin to remove multiple occurrences of a key in java property files.
 
 Sometimes we end up having duplicate entries of the same key due to merge issues in source control (I'm looking at you svn!) or other reasons. This is something I whipped up to remove such duplicate entries and preserve the last key value pair because that's the one resource bundle class ends up selecting from the file. 
 

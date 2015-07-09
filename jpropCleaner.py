@@ -13,23 +13,22 @@ def get_line_value_pair(lines,duplicate_keys):
 	i = 0
 	duplicate_keys_occurance = {}
 	result_lines=[]
-	
+
 	for x in duplicate_keys:
 		duplicate_keys_occurance.setdefault(x,0)
 
 	for line in reversed(lines):
-		y = line.encode('ascii','ignore')
-		pos = y.find('=')
-		
+		pos = line.find('=')
+
 		if(pos != -1):
-			z = y[0:pos]
+			z = line[0:pos]
 			z = z.strip()
 			try:
 				if (duplicate_keys.index(z) > -1):
 					if (duplicate_keys_occurance[z] == 0):
 						result_lines.append(line)
 						duplicate_keys_occurance[z] = 1
-			except Exception, e:
+			except Exception as e:
 				result_lines.append(line)
 				pass
 		else:
@@ -41,36 +40,35 @@ def find_duplicate_keys(lines):
 	specific_keys = []
 	duplicate_keys  = []
 	for x in lines:
-			y = x.encode('ascii','ignore')
-			pos = y.find("=")
-			
+			pos = x.find('=')
+
 			if (pos != -1):
-				z = y[0:pos]
+				z = x[0:pos]
 				z = z.strip()
-				
+
 				try:
 					if(specific_keys.index(z) > -1):
 						try:
 							if(duplicate_keys.index(z) > -1):
 								pass
-						except Exception, e1:
+						except Exception as e1:
 							duplicate_keys.append(z)
-				except Exception, e:
+				except Exception as e:
 					specific_keys.append(z)
-	print 'Duplicate keys are : ', duplicate_keys
+	print('Duplicate keys are : ', duplicate_keys)
 	return duplicate_keys
-		
+
 
 class JpCleanerCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		lines = extract_lines(self.view,edit)
 		duplicate_keys  = find_duplicate_keys(lines)
-		
+
 		result_lines = get_line_value_pair(lines,duplicate_keys)
 		status  = ""
 		if( len(duplicate_keys) ==0 ):
 			status = "No duplicates!!!!"
-		else:	
+		else:
 			regionToErase = sublime.Region(0, self.view.size())
 			self.view.erase(edit,regionToErase)
 			status = "Done cleaning duplicates! Save file after reviewing the changes!!!"
